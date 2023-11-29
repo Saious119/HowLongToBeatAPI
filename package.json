@@ -17,5 +17,8 @@
     "helmet": "^7.1.0",
     "howlongtobeat": "^1.8.0",
     "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "@vercel/node": "^3.0.11"
   }
 }
