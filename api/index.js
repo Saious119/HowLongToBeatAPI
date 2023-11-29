@@ -27,7 +27,7 @@ app.use(morgan('combined'));
 // defining an endpoint to return hltb entry based on given game name (gname)
 app.get('/api/game/:gname', (req, res) => {
     const { gname } = req.params;
-    hltbService.search(gname).then(result => res.send(result));
+    hltbService.search(gname).then(result => res.end(result));
     //res.send(ads);
 });
 
