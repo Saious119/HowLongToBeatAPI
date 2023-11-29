@@ -1,6 +1,6 @@
 // ./src/index.js
 // importing the dependencies
-const express = require('express');
+const app = require('express')();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const helmet = require('helmet');
@@ -10,7 +10,7 @@ let hltb = require('howlongtobeat');
 let hltbService = new hltb.HowLongToBeatService();
 
 // defining the Express app
-const app = express();
+//const app = express();
 
 // adding Helmet to enhance your Rest API's security
 app.use(helmet());
