@@ -25,13 +25,15 @@ app.use(cors());
 app.use(morgan('combined'));
 
 // defining an endpoint to return hltb entry based on given game name (gname)
-app.get('/game/:gname', (req, res) => {
+app.get('/api/game/:gname', (req, res) => {
     const { gname } = req.params;
     hltbService.search(gname).then(result => res.send(result));
     //res.send(ads);
 });
 
 // starting the server
-app.listen(3001, () => {
-  console.log('listening on port 3001');
-});
+// app.listen(3001, () => {
+//   console.log('listening on port 3001');
+// });
+
+module.exports = app;
