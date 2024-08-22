@@ -9,31 +9,26 @@ const morgan = require('morgan');
 let hltb = require('howlongtobeat');
 let hltbService = new hltb.HowLongToBeatService();
 
-// defining the Express app
-//const app = express();
-
-// adding Helmet to enhance your Rest API's security
-app.use(helmet());
-
-// using bodyParser to parse JSON bodies into JS objects
-app.use(bodyParser.json());
-
 // enabling CORS for all requests
-app.use(cors());
+app.use(cors({
+	//origin: "https://cringebots.dev", // restrict calls to those this address
+    origin: "*",
+	methods: "GET" // only allow GET requests
+}));
 
-// adding morgan to log HTTP requests
-app.use(morgan('combined'));
 
 // defining an endpoint to return hltb entry based on given game name (gname)
 app.get('/api/game/:gname', (req, res) => {
     const { gname } = req.params;
-    hltbService.search(gname).then(result => res.end(result));
+    hltbService.search(gname).then((result)  => {
+        console.log(result);
+        res.send(result[0]);
+    });
     //res.send(ads);
+    //return result;
 });
 
 // starting the server
-// app.listen(3001, () => {
-//   console.log('listening on port 3001');
-// });
-
-module.exports = app;
+app.listen(3001, () => {
+  console.log('listening on port 3001');
+});
